@@ -39,7 +39,7 @@ let Q = {
     string: {
         // 1.统计一串字符中每个字母出现的次数
         getFrequencyNumber: (str) => {
-            str.split('').reduce((pre, cur) => {
+           return str.split('').reduce((pre, cur) => {
                 pre[cur] ? pre[cur]++ : pre[cur] = 1
                 return pre
             }, {})
@@ -50,3 +50,6 @@ let Q = {
 
     }
 }
+
+let b=Q.string.getFrequencyNumber('abcss')
+console.log(b);
