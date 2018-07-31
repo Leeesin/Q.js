@@ -85,31 +85,19 @@ let Q = {
             if (!type) {
                 return Object.prototype.toString.call(o)
             }
-            switch (type.toLowerCase()) {
-                case 'string':
-                    return Object.prototype.toString.call(o) === '[object String]';
-                case 'number':
-                    return Object.prototype.toString.call(o) === '[object Number]';
-                case 'boolean':
-                    return Object.prototype.toString.call(o) === '[object Boolean]';
-                case 'undefined':
-                    return Object.prototype.toString.call(o) === '[object Undefined]';
-                case 'null':
-                    return Object.prototype.toString.call(o) === '[object Null]';
-                case 'function':
-                    return Object.prototype.toString.call(o) === '[object Function]';
-                case 'array':
-                    return Object.prototype.toString.call(o) === '[object Array]';
-                case 'object':
-                    return Object.prototype.toString.call(o) === '[object Object]';
-                case 'nan':
-                    return isNaN(o);
-                case 'elements':
-                    return Object.prototype.toString.call(o).indexOf('HTML') !== -1;
+            else if (type === 'NaN') {
+                return isNaN(o);
+            }
+            else if (type === 'Element') {
+                return Object.prototype.toString.call(o).indexOf('HTML') !== -1;
+            }
+            else {
+                return Object.prototype.toString.call(o) === `[object ${type}]`;
             }
         },
     }
 }
 
-let b = Q.string.getFrequencyNumber('abcss')
-console.log(b);
+let a='S'
+let x = Q.validate.isType(a, 'String')
+console.log(x); 
